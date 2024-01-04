@@ -16,7 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+import debug_toolbar
+
+admin.site.site_header = 'Recipeazy Admin'
+admin.site.index_title = 'Admin'
 
 urlpatterns = [
-    path('recipes/', include('recipes.urls'))
+    path('admin/', admin.site.urls),
+    path('recipes/', include('recipes.urls')),
+    path('__debug__/', include(debug_toolbar.urls))
 ]
